@@ -9,14 +9,20 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="style.css">
+    
     <title>Dashboard</title>
 </head>
 
 <body>
     <div class="wrapper">
-        <h1>Hello {{logged_user.first_name}}</h1>
-        <a href="/logout">Logout</a>
-        <a href="/contents/new"><button>Post Your Experiences</button></a>
+        <div class="name-div">
+            <h1>Hello {{logged_user.first_name}}</h1>
+        </div>
+        <div class="button-div">
+            <a href="/logout">Logout</a>
+            <a href="/contents/new"><button>Post Your Experiences</button></a>
+        </div>
         <h4>Welcome to Early Childhood Experiences Sharing spot!!</h4>
         <table class="table table-dark">
             <thead>

@@ -7,10 +7,10 @@ PASSWORD_REGEX = re.compile(r'^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*\d)(?=\S*([^\w\s]|[
 class UserManager(models.Manager):
     def registration_validator(self, postData):
         errors = {}
-        if len(postData['first_name']) < 3:
-            errors['first_name'] = "First must be at least 3 characters"
-        if len(postData['last_name']) < 3:
-            errors['last_name'] = "Last_name must be at least 3 characters"
+        if len(postData['first_name']) < 1:
+            errors['first_name'] = "First must be at least 1 characters"
+        if len(postData['last_name']) < 1:
+            errors['last_name'] = "Last_name must be at least 1 characters"
         if not EMAIL_REGEX.match(postData['email']):   
             errors['email'] = "Invalid email address!"
         users_with_email = User.objects.filter(email = postData['email'])
@@ -27,15 +27,18 @@ class UserManager(models.Manager):
 class ExperienceManager(models.Manager):
     def content_validator(self, postData, postFile):
         errors = {}
-        if len(postData['title']) < 3:
-            errors["title"] = "A post title must consist of 3 characters!"
-        if len(postData['content']) < 3:
-            errors["content"] = "post must consist of 3 characters!"
+        if len(postData['title']) < 1:
+            errors["title"] = "Sorry, title cannot be blank!"
+        if len(postData['content']) < 1:
+            errors["content"] = "Sorry, post cannot be blank!"
         # return errors
         if "videofile" in postFile: 
             if postFile['videofile'].size > 300*1024*1024:
 
                 errors["vieofile"] = "file is too big!"
+            if postFile['videofile'].size < 0*0*0:
+
+                errors["vieofile"] = "Please choose a video/photo!"
         
         return errors
 

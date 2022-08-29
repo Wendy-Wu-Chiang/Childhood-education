@@ -20,7 +20,11 @@
         {% endfor %}
     </ul>
     {% endif %}
+    
     <h3>Hello {{logged_user.first_name}}!</h3>
+    <br>
+    <a href="/dashboard">Go Back</a>  |  <a href="/logout">Logout</a>
+    <br>
     <br>
     <h4>{{content.title}}</h4>
     <br>
@@ -60,9 +64,9 @@
                     <a href="/delete/{{content.id}}/{{comment.id}}">Delete</a>
                     {% endif %}    
             {% endfor %}
-        </div>
+    </div>
         
-    <a href="/dashboard">Go Back</a>  |  <a href="/logout">Logout</a>
+    
 </body>
 
 </html>
