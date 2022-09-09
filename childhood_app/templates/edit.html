@@ -26,11 +26,20 @@
             <label for="title">Title</label>
             <input type="text" name="title" id="title" value="{{content.title}}" class="form-control" style="width:300px;height:50px;">
             
-            <label for="videofile">Video</label>
+            <label for="videofile">Photo/Video</label>
             <input type="file" name="videofile" id="videofile" value="{{content.videofile.url}}" class="form-control" style="width:300px;height:50px;">
-
+            
+            {% if ".mp4" in content.videofile.url %}
+            <video controls ><source src="{{content.videofile.url}}" type="video/mp4" style="width:550px;height:650px;"></video>
+            {% elif ".MOV" in content.videofile.url %}
+            <video controls ><source src="{{content.videofile.url}}" type="video/quicktime" style="width:550px;height:650px;"></video>
+            {% else %}
+            <img src="{{content.videofile.url}}"  style="width:550px;height:650px;">
+            {% endif %}
+            <br>
+            <br>
             <label for="content">Description:</label>
-            <textarea type="text" name="content" id="content" class="form-control" style="width:600px;height:400px;" maxlength="10000">{{content.content}}</textarea>
+            <textarea type="text" name="content" id="content" class="form-control" style="width:600px;height:300px;" maxlength="10000">{{content.content}}</textarea>
 
         </div>
         <a href="/cancle" class="btn btn-dark">Cancle</a>

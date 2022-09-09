@@ -62,6 +62,7 @@ class Experience(models.Model):
     likes = models.PositiveIntegerField(default=0)
     user_content = models.ForeignKey(User, related_name="user_contents", on_delete=models.CASCADE ,null=True)
     viewed_by = models.ManyToManyField(User, related_name="viewed_contents")
+    # viewed_times = models.ForeighKey(content, related_name="content_views",on_delete=models.CASCADE, null=True)
     
     liked_by = models.ManyToManyField(User, related_name="liked_contents")
     created_at = models.DateTimeField(auto_now_add=True)

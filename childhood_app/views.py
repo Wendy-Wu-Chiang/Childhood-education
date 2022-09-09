@@ -99,8 +99,9 @@ def content(request, content_id):
     user = User.objects.get(id=request.session['logged_user'])
     content = Experience.objects.get(id=content_id)
     user.viewed_contents.add(content)
-    # views = Experience.objects.get(id=content_id)
-    # content.views.add(views)
+    # views.viewed_contents.add(user)
+    
+    # content.viewed_contents.add(user)
     context = {
         'logged_user': user,
         'content': content,
@@ -132,10 +133,6 @@ def update(request,content_id):
             to_update.save()
         return redirect('/dashboard')
     return redirect('/')
-
-# def total_views(request, content_id):
-    
-
 
        
 def likes(request, content_id):
